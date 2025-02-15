@@ -1,0 +1,58 @@
+<!DOCTYPE html> <!-- 문서의 유형 정의 -->
+ <!-- html 버전 설명하는 다큐먼타입 -->
+<html lang="ko">
+<!-- 문서의 루트 요소로 HTML 문서의 시작  lang : 언어 -->
+    <head>  
+        <!-- HMTL 테그의 정보를 meta태그를 이용해서 표현 -->
+        <!-- 한국어 문자를 위해서 UTF-8를 사용 -->
+        <meta charset="UTF-8"> 
+        <!-- 반응형 웹 디자인을 위한 메타태그를 이용함 넓이는 장치 크기정도 , 줌 크기는 1.0배-->
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>회원 등록</title>
+        <link rel="stylesheet" href="/Section3/CSS/style.css">
+    </head>
+    <body>
+        <!-- 화면에 뿌려줄 데이터 삽입 (글, 이미지)-->         
+        <!-- div태그는 div 태그안에 또다른 태그나 값을 넣기전까지는  영역과 공간을 가지지않는다. -->
+        <div> 
+            <div id="wrapper" class="wrapper">
+            <!-- form태그는 웹 브라우저(프론트엔드)에서 웹서버(백엔드)로 데이터를 넘기고자할때
+            input 태그와 같이 작성해주는 태그 -->
+            <form id="registrationForm" class="registrationForm">
+                <h2>회원 등록</h2>
+                <!-- 클래스는 중복이름 가능 / id는 중복이름 X -->
+                
+                    <!-- label 태그는 하나의 레이블이라 생각하면된다, 흔히 input 값 앞에있는 텍스트라고생각하면된다. -->
+                <div class="inputGroup">
+                    <label for="nickname">사용자 이름</label>
+                    <input type="text" id="nickname" class="nicknameInput">
+                    <!-- span은 inline 속성으로 가로줄로 보여주기 -->
+                    <span class="helperText">알림</span>    
+                </div>            
+                <div class="inputGroup">
+                    <label for="userEamil" id="email" class="emailInput">이메일 주소</label>
+                    <input type="email">
+                    <span class="helperText">알림</span>
+                </div>
+                <div class="inputGroup">
+                    <label for="userPassword" id="userPassword" class="passwordInput">비밀번호</label>
+                    <input type="password" >
+                    <span class="helperText">알림</span>
+                </div>
+                <div class="inputGroup">
+                    <label for="confirmPassword" id="confirmPassword" class="confirmPasswordInput">비밀번호 확인</label>
+                    <input type="password">
+                    <span class="helperText">알림</span>
+                </div>
+                <div class="inputGroup"s>
+                    <label for="phone" id="phone" class="phoneInput">휴대폰 번호</label>
+                    <input type="tel">
+                    <span class="helperText">예: 010-2988-2630 </span>
+                </div>
+                <button type="submit">등록 완료</button>
+            </form>
+            </div>
+        </div>
+    </body>
+
+</html>
