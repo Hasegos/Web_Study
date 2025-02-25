@@ -141,3 +141,98 @@ function showThis(){
    console.log(this);
 }
 showThis();
+
+/* JAVASCRIPT (배열-실습) */
+/*
+    배열은 처음과 끝을 제외한 중간 데이터를 삭제하기 X 
+    배열, 객체 CRUD 
+    배열 공간 자체를 건드는 건 아니라 그 안에 있는 값을 건듬
+*/
+{
+    const fruits = ["사과" , "바나나" , "오렌지"];
+    console.log(fruits[1]);
+
+    const Person = {
+        name : "홍길동",
+        age : 25,
+        city : "서울"
+    };
+
+    console.log(Person.name);
+    console.log(Person.age);
+    console.log(Person.city);
+
+    const dogs = ['비숑프리제', '포메라니안' , '푸들', '시바견', '말티즈'];
+    console.log(dogs[1]);
+
+    dog[2] = '허스키';
+    console.log(dogs[2]);
+
+    dogs.pop();
+    console.log(dogs);
+
+    delete dogs[1];
+    console.log(dogs);
+
+    dogs.splice(2,1, "dd");
+    console.log(dogs);
+
+    let numbers = [1,2,3,4,5];
+    let filteredNumbers = numbers.filter(num => num == 3);
+    console.log(filteredNumbers);
+
+    numbers.push(6);
+    console.log(numbers);
+
+    numbers.pop();
+    console.log(numbers);
+}
+
+/* JAVASCRIPT (예외처리 */
+/*
+    try{
+        문제가 생길 수 있는 코드
+    
+    }catch(e){ 에러가 났는지 종류에 대해 알려줌
+        문제가 발생하면, 이 부분에서 그 문제를 처리    
+    }finally{
+        문제가 발생 하든 안하든 항상 실행되는 코드가 들어감
+    }
+
+    throw는 에러를 직접 발생
+    catch는 에러를 찾아냄
+
+
+    RestAPI란
+     HTTP 메소드 + JSON 객체 웹페이지{key : value}를 가짐
+
+     CRUD   
+        HTTP 메소드 방식
+     Create -> Post (서버에다가)
+     Read -> Get (요청한 페이지 가져옴)
+     Update -> Put
+     Delete -> Delete (데이터 삭제)
+
+     새로고침없이 작업가능한 fetch() 비동기 통신 방식
+     앞전에 있던 작업이 끝나기전에 다음코드 실행
+*/
+
+function divideNumbers(){
+    try{
+        let number = 10;
+        let zero = 0;
+
+        // if(zero === 0){
+        //     throw new Error("0으로 나눌수 없습니다.");
+        // }
+        let result = number / zero;
+        console.log ("결과: " + result);
+    }catch(e){
+        console.log("문제가 생겼습니다. " + e.message);
+    }
+    finally{
+        console.log("프로그램이 끝났어요");
+    }     
+}
+
+divideNumbers();
