@@ -236,3 +236,22 @@ function divideNumbers(){
 }
 
 divideNumbers();
+
+/* JAVASCRIPT (DOM-개념) */
+/*
+    이미지, 텍스트, 버튼들의 집합을 객체로 다룰 수 있게끔해줌
+    객체에서 CRUD 물리적인 기능을 이용할 수 있게 해주는 기능 또는 모델
+
+    HTML에 있는 태그와 JS안에 있는 코드와 연결시켜야한다.
+    (태그명, id, id선택자, class 선택자로 접근)
+
+    태그명 : document.querySelector('태그명'); 
+            여기서 #태그명 을 사용시 id선택자가됨
+            추가로 .클래스명 을 사용시 class선택자가됨
+    id선택자 : document.getElementById("wapper");
+    class선택자 : document.getElementByClassName("clasname");
+*/
+
+// classname 같은 경우는 collection형태로 나오기때문에 css 처리가 불가능
+// 그래서 querySelector를 사용하자
+document.querySelector("input").style.background ="green";
