@@ -298,6 +298,9 @@ divideNumbers();
     먼저 피자라는 인자를 받고 
     1번을 실행후 그다음 2번 3초 뒤 콜백함수인 
     3번을 불러냄
+
+    콜백은 콜백 밖에서 온 비동기 값을 알수없다.
+    그리고 매번 비동기를 실행해야지만 그값을 사용가능
 */
 
 
@@ -309,3 +312,88 @@ function orderFood(food, callback){
 }
 
 orderFood('피자',function(){console.log("맛있게드셈")});
+
+
+
+/* JAVASCRIPT (비동기프로그래밍3-개념) */
+/*
+    프로미스(Promise) -> 약속
+
+    프로미스는 배달이 올지 말지 약속과같다
+    음식이 도착 -> 성공
+    음식 X -> 실패
+
+    new Promise((성공, 실패) => {
+        
+        성공했을때
+
+
+        실패했을때
+    })
+
+    이형태 구조로 갖고 만약 성공했을 경우
+    .then 형태로 .then((message) => {}) 형태로 호출이 해야된다.
+
+    실패했을 경우
+    .catch 형태로 .catch((error) => {}) 형태로 호출을 해야된다.
+
+    프로미스는 성공과 실패여부를 (객체에 결과값을) 저장이 가능해서 
+    저장된 값을 가져오는데 용이하다    
+*/
+
+const OrderFood = new Promise((resole, reject) => {
+    const isDelivered = false; // 음식이 배달될지 여부
+    if(isDelivered == true){
+        resole('음식이 배달됨'); // 성공은 message
+    }else{
+        reject('배달이 실패했습니다.'); // 실패는 error
+    }
+});
+
+//OrderFood.then((message) => {console.log(message)});
+
+OrderFood.catch((error) => {console.log(error)});
+
+
+/* JAVASCRIPT (비동기프로그래밍4-개념) */
+/*
+    Async , Await
+
+    배달을 기다리는 동안 마치 잠시 기다렸다가 음식이 오면,
+    먹는 것처럼 동작
+    => 주문이 완료될때까지 기다렸다가 그사이에 다른일 가능
+
+    async를 작성하고 await 전까지는 음식이 도착하기전
+
+    await는 음식이 도착한 후에 일을 처리
+*/
+
+function deliverFood(){
+    return new Promise((resolve) => { 
+        setTimeout(() => {
+            resolve('음식이 배달되었습니다.');
+        }, 3000);
+    });
+}
+
+async function orderAndEat() {
+    console.log('음식을 주문했어요');
+    const message = await deliverFood();
+    console.log(message);
+    console.log("async 끝났습니다.");
+}
+
+orderAndEat();
+
+
+/* JAVASCRIPT (비동기프로그래밍-실습) */
+
+function orderFood(food, callback){
+    console.log(`${food} 주문을 시작해요`);
+    setTimeout(function(){
+        console.log(`${food}가 배달 되었습니다.`)
+        callback();
+    }, 3000);
+}
+
+orderFood('피자', function(){console.log("맛있게먹어요")});
