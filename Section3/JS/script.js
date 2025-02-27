@@ -254,4 +254,58 @@ divideNumbers();
 
 // classname 같은 경우는 collection형태로 나오기때문에 css 처리가 불가능
 // 그래서 querySelector를 사용하자
-document.querySelector("input").style.background ="green";
+//document.querySelector("input").style.background ="green";
+
+/* JAVASCRIPT (비동기프로그래밍-개념) */
+/*
+    동기 프로그래밍 
+    스레드 -> 구간 -> 데이터가 흐르는 통로
+
+    A                       B
+    데이터가 20초 끝나야 다음데이터를 옮기는데 시간이 걸림
+    즉, 데이터가 많아질수록 오래걸림 (순차적으로)
+    (완료지점을 알수있다.)
+    
+    비동기 프로그래밍
+
+    A                       B
+    데이터가 동시에 옮기는게 가능함
+    (중첩적으로 가능) 병행성으로 움직임
+    병행성은 단일 스레드내에서 비동기 작업을 처리하는 동안 다른 작업을 중단하지 않고 실행
+    
+    장점 1. 시간을 짧게 줄일수있다.
+
+    단점 1. 정확하게 완료지점 알 수가 없다.
+    비동기작업을 많이사용시 가독성 떨어지고 이해 ↓
+*/
+
+
+/* JAVASCRIPT (비동기프로그래밍2-개념) */
+/*
+    callback()
+    ex) 음식을 주문해서 도착하기전까지 다른거하다가 도착하면 알려주는거라 할 수 있다.
+
+    
+    function orderFood(food, callback){
+        console.log(`${food} 주문을 시작해요`); 1번
+        setTimeout(function(){console.log(`${food}가 배달되었습니다.` <- 2번)
+            callback(); <- 3번
+        }, 3000);
+    }
+
+    orderFood('피자',function(){console.log("맛있게드셈") <- 3번});
+
+    먼저 피자라는 인자를 받고 
+    1번을 실행후 그다음 2번 3초 뒤 콜백함수인 
+    3번을 불러냄
+*/
+
+
+function orderFood(food, callback){
+        console.log(`${food} 주문을 시작해요`);
+        setTimeout(function(){console.log(`${food}가 배달되었습니다.`)
+            callback();
+        }, 3000);
+}
+
+orderFood('피자',function(){console.log("맛있게드셈")});
