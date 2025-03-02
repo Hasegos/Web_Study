@@ -397,3 +397,55 @@ function orderFood(food, callback){
 }
 
 orderFood('피자', function(){console.log("맛있게먹어요")});
+
+/* JAVASCRIPT(fetch - 개념)  */
+/*
+    fetch() => 데이터를 가져오거나 혹은 보내기도함
+    프론트와 백엔드의 데이터간 연결을 fetch함수가 도와줌
+
+    프론트 -> 서버 POST (회원가입) POST는 데이터 (보안 O) body 본문에 들어감
+
+    서버 -> 프론트 GET 있는 그대로 보여줌(보안 x)
+
+    PUT는 데이터 수정 POST body라는 부분에 들어감
+
+    DELETE는 데이터 삭제 GET이랑 비슷함
+
+    body는 post영역의 body라는 곳에 들어감.
+
+    Promise => resolve();
+               reject();  
+    fetch(url, options).then(response => { response 응답처리(Promise 객체를 처리)});
+    .catch(error => {});
+
+    fetch는 자동으로 promise 객체를 반환한다.
+
+    option에는 method : post,get,put,delete
+*/
+
+/* JAVASCRIPT(fetch - 실습)  */
+
+// GET 방식
+fetch("https://korean-advice-open-api.vercel.app/api/advice",{
+    method: 'GET',
+}).then(response =>{
+        if(!response.ok){
+            throw new Error("네트워크가 에러터짐");
+        }
+    return response.json();
+}).then(data => {
+    console.log(data);
+}).catch(error => console.log("fetch" + error));
+
+// POST 방식
+fetch("https://korean-advice-open-api.vercel.app/api/advice", {
+    method : 'POST',
+    headers : {
+        'Content-Type': 'application/json',        
+    },
+    body: JSON.stringify({
+        name : "blck",
+        age : 32,
+    })
+}).then(response => response.json()).then(data =>{console.log("Success",data)})
+.catch(error => {console.log("Error", error)});
