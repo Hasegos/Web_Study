@@ -438,6 +438,7 @@ fetch("https://korean-advice-open-api.vercel.app/api/advice",{
 }).catch(error => console.log("fetch" + error));
 
 // POST 방식
+/* POST방식에서 보낼때 headers  */
 fetch("https://korean-advice-open-api.vercel.app/api/advice", {
     method : 'POST',
     headers : {
@@ -449,3 +450,124 @@ fetch("https://korean-advice-open-api.vercel.app/api/advice", {
     })
 }).then(response => response.json()).then(data =>{console.log("Success",data)})
 .catch(error => {console.log("Error", error)});
+
+/* JAVASCRIPT(localstorage, sessionStorage)  */
+/*
+    데이터가 삭제하기 전까지
+    즉, 브라우저 혹은 컴퓨터를 끄거나 닫더라도 데이터 유지(localstroage)
+    각 도메인주소마다 loalstorage를 가지고있다.
+    url => www.naver.com (도메인이라고도 한다.)
+
+    create는  데이터 저장
+
+    read 키에 해당되는 value값 가져오기
+
+    update는 덮어씌우기
+    
+    delete는 키값넣으면 삭제
+
+    localStorage.clear() 모든 localstorage 전체 삭제
+
+
+    SessionStorage : 저장된 데이터는 브라우저 닫을때 까지 유지
+    각각의 도메인마다 고유한 sessionstorage를 가지고있다.
+
+    http / https 둘다 다른 고유한 걸 가짐
+
+    CRUD 
+    
+    Create => sessionStorage.setItem('key', 'value');
+    READ => sessionStorage.getIem('key');
+    Update => sessionStorage.setItem('key', 'value');
+    Delte => sessionStorage.removeItem('SessionID');
+    sessionStorage.clear() 전체 삭제
+*/
+/* JAVASCRIPT(localstorage, sessionStorage - 실습)  */
+
+// localStorage.setItem("username", "canesblack");
+// localStorage.getItem("username");
+// localStorage.removeItem("username");
+// localStorage.clear();
+
+// sessionStorage.setItem("SessionID2", "야호");
+// sessionStorage.getItem("SessionID2"); // 야호
+// sessionStorage.removeItem("SessionID2"); // 야호 삭제됨
+// sessionStorage.clear(); // 전체 삭제
+
+/* JAVASCRIPT(var, let, const(차이, 스코프-개념))  */
+/*
+    var a = 1; 가능 (에러 발생율 ↑)
+    var a = 2; 
+
+    let a = 1; 불가능
+    let a = 2;  
+
+    const a = 1; 불가능
+    const a = 2;
+
+    스코프 => 범위 (var, let, const의 값을 출력하고자할때,
+              어느 범위에 속하냐에따라 출력여부가 다르다.)
+
+    1. 전역 스코프 => 2번과 3번을 제외한 나머지
+    2. 함수 스코프 => function(){} -> 함수 스코프
+    3. 블럭 스코프 => {} -> 블럭 스코프
+
+    var a = 1; // 전역스코프
+    function hello() {
+        var b =2; // 함수 스코프
+        if(true){
+            let c = 3; // 블럭 스코프
+            console.log(a);
+            console.log(b);
+            console.log(c);
+
+            결과 : 123
+        }
+    }
+
+    전역스코프는 어디서든 접근가능
+
+    전역 -> 함수 -> 블록
+
+    const a = function() { }; => 최상위 위에서 아래로
+
+    const는 스코프에서 최상단에 작성해줘야함
+*/
+
+/* JAVASCRIPT(var, let, const(차이, 스코프-실습))  */
+
+var a = 1; // 전역스코프
+
+function hello(){
+    var b = 2; // 함수 스코프
+    if(true){
+        let c = 3; // 블록 스코프
+        console.log(a,b,c);
+    }    
+}
+hello();
+
+/*
+   전역스코프 -> 함수스코프 -> 블록스코프  
+   넓은 범위로 갈때는 변수 출력이 가능한데
+   블록스코프 -> 함수스코프 -> 전역스코프
+   작은 범위에서 넓은 범위로 갈때는 출력이 불가능
+ 
+   호이스팅이 적용이안되기때문에 항상 함수가 최상단에 위치해야,
+   데이터가 위에서 아래로 해야됨
+*/
+const hello2 = function (){};
+
+console.log(hello2);
+
+
+hello4();
+
+
+function hello4(){
+    console.log("hello");
+}
+
+console.log(g);
+var g = 20;
+
