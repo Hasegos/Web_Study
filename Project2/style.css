@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /*테두리를 포함한 모든 태그요소에 크기를 보여준다*/
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #2c3e50;
+    background-color: #f0f8ff;
+    /*애니메이션 속성을 넣을 수 있음*/
+    animation: fadein 1.5s ;    
+}
+
+/* @keyframes를 통해 애니메이션 효과 정의할수있음*/
+@keyframes fadein {
+    from{
+        /*안보였다가 실행했을시 100프로로*/
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
+
+.calculate {
+    display: block; /* 요소를 인라인형태로 쌓아가게끔 + 크기도 지정가능*/
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-size: 300%;
+    color: #34495e;    
+}
+
+.buttonGroup {
+    display: inline-block;
+}
+
+input {
+    direction: ltr; /* 입력 방향을 왼쪽에서 오른쪽으로 설정*/
+    background-color: #ffffff;
+    width: 80vw;
+    font-size: 3rem; /* rem은 최상위 body태그 안에 있는 값에 비례해서적용*/
+    color: #2c3e50;
+    border: 2px solid #bdc3c7;
+    border-radius: 0.5rem; /* 도형의 모서리의 둥근정도*/
+    outline: none;
+}
+
+table {
+    margin: 0 auto; /* 주로 display 속성이 block인 값을 가진 태그요소들을 가운데로 옮기고 싶을 때 이용한다.*/
+}
